@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Преступление и наказание | Смысл эпилога</title>
+    <!-- Подключение шрифтов Google Fonts для эстетики -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e1c27 0%, #2a2a3b 50%, #1a2a3a 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Анимированный фон с размытыми фигурами */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(123, 97, 255, 0.15) 0%, transparent 30%),
+                        radial-gradient(circle at 80% 70%, rgba(255, 140, 0, 0.1) 0%, transparent 35%),
+                        radial-gradient(circle at 40% 80%, rgba(0, 200, 255, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* === Стекло (Glassmorphism) === */
+        .glass-card {
+            background: rgba(20, 20, 35, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Заголовки */
+        h1, h2, h3 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            background: linear-gradient(to right, #ffffff, #c0b9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            border-left: 5px solid #b38bff;
+            padding-left: 1.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* Шапка */
+        .header {
+            text-align: center;
+            margin-bottom: 5rem;
+            padding: 3rem 2rem;
+            border-radius: 48px;
+        }
+
+        /* Секция с героем */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2rem;
+            margin-bottom: 5rem;
+            align-items: start;
+        }
+
+        .hero-image-frame {
+            border-radius: 32px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px -15px black;
+        }
+
+        /* Стилизованное изображение (силуэт/абстракция Раскольникова) */
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            mix-blend-mode: lighten;
+            opacity: 0.9;
+            transition: transform 0.4s ease;
+        }
+
+        .hero-image-frame:hover .hero-image {
+            transform: scale(1.03);
+        }
+
+        /* Карточка информации о герое (стекло) */
+        .hero-info-card {
+            padding: 2rem;
+            height: fit-content;
+        }
+
+        .hero-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            color: white;
+        }
+
+        .hero-sub {
+            color: #a78bfa;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            border-left: 3px solid #ffb86b;
+            padding-left: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .info-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 1rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9ca3af;
+        }
+
+        .info-value {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* Блок с основным содержанием */
+        .content-block {
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .thesis {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .thesis-item {
+            flex: 1 1 250px;
+            padding: 1.8rem;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.2s;
+        }
+
+        .thesis-item:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 215, 0, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .thesis-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #b38bff;
+        }
+
+        .thesis-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: white;
+        }
+
+        /* Аккордеон (спойлеры) для аргументов */
+        .accordion {
+            margin: 2rem 0;
+        }
+
+        .accordion-item {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 24px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .accordion-header {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .accordion-header i {
+            transition: transform 0.3s;
+            color: #b38bff;
+        }
+
+        .accordion-item.active .accordion-header i {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            padding: 0 2rem;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 0px solid transparent;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 300px; /* Достаточно для текста */
+            padding: 1.5rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Разделитель с символизмом */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+            color: rgba(255,255,255,0.2);
+        }
+
+        .divider-line {
+            height: 1px;
+            flex: 1;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        }
+
+        /* Две колонки: возможность vs утопия */
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .column {
+            padding: 2rem;
+            border-radius: 32px;
+            background: rgba(10, 10, 20, 0.3);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .column h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .possibility {
+            border-top: 4px solid #4ade80;
+        }
+
+        .utopia {
+            border-top: 4px solid #f87171;
+        }
+
+        /* Подвал */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 900px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+            }
+            .columns {
+                grid-template-columns: 1fr;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .content-block {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Украшения: неоновые точки */
+        .dot-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="dot-pattern"></div>
+    <div class="container">
+        <!-- Шапка -->
+        <header class="header glass-card">
+            <h1>Преступление и наказание</h1>
+            <div class="subtitle">Смысл финальной части (эпилога): возможность или утопичность искупления</div>
+            <p style="max-width: 700px; margin: 0 auto; color: #cbd5e0;">
+                «...но тут уже начинается новая история, история постепенного обновления человека...»
+            </p>
+        </header>
+
+        <!-- Блок с героем и карточкой -->
+        <div class="hero-section">
+            <div class="hero-image-frame glass-card">
+                <!-- Абстрактное изображение Родиона Раскольникова (можно заменить на ссылку с реальным портретом) -->
+                <img class="hero-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='1000' viewBox='0 0 100 120'%3E%3Crect width='100' height='120' fill='%232d2a4a'/%3E%3Cpath d='M30 40 Q50 20 70 40 L75 70 Q50 95 25 70 Z' fill='%233f3a6b' opacity='0.8'/%3E%3Ccircle cx='50' cy='35' r='12' fill='%235a4e8c' /%3E%3Ctext x='20' y='100' font-size='8' fill='%23b0a8d0' font-family='Arial'%3ERASKOLNIKOV%3C/text%3E%3C/svg%3E"
+                     alt="Абстрактный силуэт Раскольникова">
+            </div>
+
+            <div class="hero-info-card glass-card">
+                <div class="hero-name">Родион Раскольников</div>
+                <div class="hero-sub">бывший студент, герой романа</div>
+
+                <div class="quote">
+                    «Я не старушонку убил, я себя убил!»
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Теория</div>
+                        <div class="info-value">«Тварь дрожащая» / «право имеющие»</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Наказание</div>
+                        <div class="info-value">Каторга II разряда</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Эпилог</div>
+                        <div class="info-value">Перерождение? Сон о моровой язве</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Соня</div>
+                        <div class="info-value">"вечная Сонечка"</div>
+                    </div>
+                </div>
+
+                <div class="quote" style="margin-top: 1rem;">
+                    «Их воскресила любовь...»
+                </div>
+                <p style="font-size: 0.95rem; opacity: 0.7;">* центральный персонаж финала, проходящий путь от гордыни к смирению</p>
+            </div>
+        </div>
+
+        <!-- Основной анализ -->
+        <div class="content-block glass-card">
+            <h2>Эпилог: финал открытых дверей</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                Восьмая глава второй части эпилога — самый загадочный фрагмент романа.
+                Достоевский не даёт прямого ответа: произошло ли настоящее воскресение Раскольникова или это лишь иллюзия, временное помутнение?
+            </p>
+
+            <div class="thesis">
+                <div class="thesis-item">
+                    <div class="thesis-icon"><i class="fas fa-skull"></i></div>
+                    <h3>Преступление</h3>
+                    <p>Идейное убийство, попытка доказать свою "особую породу". Теория о "крови по совести".</p>
+                </div>
+                <div class="thesis-item">
+                    <div class="thesis-icon"><i class="fas fa-gavel"></i></div>
+                    <h3>Наказание</h3>
+                    <p>Не каторга, а нравственные муки, отчуждение от людей, "разрыв с человечеством".</p>
+                </div>
+                <div class="thesis-item">
+                    <div class="thesis-icon"><i class="fas fa-dove"></i></div>
+                    <h3>Искупление?</h3>
+                    <p>Сон о трихинах, признание любви к Соне, сброшенные кандалы. Начало пути?</p>
+                </div>
+            </div>
+
+            <!-- Аккордеон: два взгляда на эпилог -->
+            <div style="margin: 3rem 0 1rem;">
+                <h3 style="margin-bottom: 1rem;">Две интерпретации финала</h3>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-check-circle" style="color: #4ade80;"></i> Аргументы за реальность искупления</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>• Раскольников больше не сомневается в Евангелии, лежащем под подушкой.<br>
+                        • Слезы и осознание своей любви к Соне — первый шаг к воскрешению.<br>
+                        • Автор говорит: "их воскресила любовь". Это прямое указание на чудо.<br>
+                        • Каторжники меняют отношение к нему — значит, он стал "своим".</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-times-circle" style="color: #f87171;"></i> Аргументы за утопичность / иллюзорность</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>• Финал открытый: "но это уже начало новой истории" — автор уходит от показа самого перерождения.<br>
+                        • Сон о трихинах показывает, что идея "наполеонства" может вернуться в иной форме.<br>
+                        • Слишком быстрое преображение после многомесячной черствости выглядит сказочно.<br>
+                        • Нет гарантии, что гордость не вспыхнет вновь.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider">
+                <span class="divider-line"></span>
+                <i class="fas fa-cross" style="color: #b38bff;"></i>
+                <span class="divider-line"></span>
+            </div>
+
+            <!-- Две колонки -->
+            <div class="columns">
+                <div class="column possibility">
+                    <h3><i class="fas fa-sun" style="color: #fbbf24;"></i> Возможность</h3>
+                    <p>Раскольников проходит путь христианского покаяния. Соня, как ангел-хранитель, выводит его к свету. Эпилог показывает, что даже самый падший человек способен на духовное возрождение. Это оптимистичный гуманизм Достоевского: человек не окончательная формула, он может измениться.</p>
+                    <p style="margin-top: 1rem;"><strong>Ключ:</strong> "Вместо диалектики наступила жизнь".</p>
+                </div>
+                <div class="column utopia">
+                    <h3><i class="fas fa-cloud-moon" style="color: #94a3b8;"></i> Утопичность</h3>
+                    <p>Финал слишком идеален, чтобы быть правдой. Сон о трихинах предупреждает: человечество может снова заразиться безумными идеями. Сам Раскольников не отказался от теории, он лишь устал от страданий. Возможно, его "воскресение" — это временный катарсис, за которым последует новый виток бунта.</p>
+                    <p style="margin-top: 1rem;"><strong>Ключ:</strong> "Тут дьявол с Богом борется, а поле битвы — сердца людей".</p>
+                </div>
+            </div>
+
+            <!-- Дополнительная ремарка о сне -->
+            <div style="background: rgba(255,255,255,0.02); padding: 2rem; border-radius: 28px; margin: 2rem 0; border: 1px dashed rgba(255,200,100,0.3);">
+                <i class="fas fa-dragon" style="float: left; font-size: 3rem; margin-right: 1rem; color: #a78bfa;"></i>
+                <h4 style="color: #ffd966;">Сон о моровой язве</h4>
+                <p>Ключевой символ эпилога: "трихины" — дух гордости и вседозволенности. Люди, считающие себя носителями истины, убивают друг друга. Это ли не проекция будущего России? Раскольников видит этот кошмар и просыпается — возможно, это метафора его личного очищения от заразы теории.</p>
+            </div>
+
+            <p style="font-style: italic; text-align: right; margin-top: 2rem; color: rgba(255,255,255,0.5);">
+                Ф.М. Достоевский оставляет финал открытым. Искупление — не точка, а многоточие...
+            </p>
+        </div>
+
+        <!-- Блок с цитатами -->
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 4rem 0;">
+            <div class="glass-card" style="padding: 1.5rem; max-width: 300px; flex: 1 1 200px;">
+                <i class="fas fa-quote-right" style="color: #b38bff; opacity: 0.5; font-size: 2rem;"></i>
+                <p>«Разве я старушонку убил? Я себя убил, а не старушонку!»</p>
+            </div>
+            <div class="glass-card" style="padding: 1.5rem; max-width: 300px; flex: 1 1 200px;">
+                <i class="fas fa-quote-right" style="color: #b38bff; opacity: 0.5; font-size: 2rem;"></i>
+                <p>«Их воскресила любовь, сердце одного заключало бесконечные источники жизни для сердца другого.»</p>
+            </div>
+            <div class="glass-card" style="padding: 1.5rem; max-width: 300px; flex: 1 1 200px;">
+                <i class="fas fa-quote-right" style="color: #b38bff; opacity: 0.5; font-size: 2rem;"></i>
+                <p>«Всё и вся погибло. Но это было всегда начало чего-то нового.»</p>
+            </div>
+        </div>
+
+        <!-- Подвал -->
+        <div class="footer glass-card">
+        </div>
+    </div>
+
+    <!-- Маленький скрипт для аккордеона -->
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const item = this.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
